@@ -1,12 +1,12 @@
 diff -urN a/tox.ini b/tox.ini
 --- a/tox.ini	2019-06-20 16:28:38.000000000 +0200
-+++ b/tox.ini	2021-03-29 20:56:48.293492104 +0200
++++ b/tox.ini	2021-03-29 21:22:00.844698941 +0200
 @@ -30,7 +30,7 @@
      networkx
  commands =
      {[testenv]commands}
 -    py.test --cov=pyunicorn tests
-+    py.test --cov=pyunicorn -ra -k 'not test_init_str' and 'not testTwinSurrogates' and 'not test_average_link_distance' tests
++    py.test --cov=pyunicorn -ra -k 'not test_init_str and not testTwinSurrogates and not test_average_link_distance' tests
  
  [testenv:style]
  skipdist = True
