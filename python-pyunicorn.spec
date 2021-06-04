@@ -13,7 +13,7 @@ designed for analyzing networks of interacting/interdependent networks.}
 
 Name:           python-%{pypi_name}
 Version:        0.6.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Unified complex network and recurrence analysis toolbox
 
 # The entire source code is BSD except the following files:
@@ -88,6 +88,9 @@ tox -e units
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.6.1-3
+- Rebuilt for Python 3.10
+
 * Mon Mar 29 2021 Iztok Fister Jr. <iztokf AT fedoraproject DOT org> - 0.6.1-2
 - New patch - one test is failing on s390x
 
