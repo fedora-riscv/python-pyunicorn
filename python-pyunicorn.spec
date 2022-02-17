@@ -3,7 +3,8 @@
 %global pypi_name pyunicorn
 
 %global _description %{expand:
-pyunicorn is a fully object-oriented Python package for the advanced
+pyunicorn (Unified Complex Network and RecurreNce analysis toolbox)
+is a fully object-oriented Python package for the advanced
 analysis and modeling of complex networks. Above the standard measures
 of complex network theory such as degree, betweenness and clustering 
 coefficient it provides some uncommon but interesting statistics like 
@@ -13,7 +14,7 @@ designed for analyzing networks of interacting/interdependent networks.}
 
 Name:           python-%{pypi_name}
 Version:        0.6.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Unified complex network and recurrence analysis toolbox
 
 # The entire source code is BSD except the following files:
@@ -92,6 +93,9 @@ tox -e units
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Feb 17 2022 Iztok Fister Jr. <iztokf AT fedoraproject DOT org> - 0.6.1-7
+- Improve description; define acronym
+
 * Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.1-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
