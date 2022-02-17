@@ -24,7 +24,7 @@ Summary:        Unified complex network and recurrence analysis toolbox
 #pyunicorn-0.6.1/pyunicorn/utils/progressbar/widgets.py
 License:        BSD and LGPLv2+
 URL:            http://www.pik-potsdam.de/~donges/pyunicorn/
-Source0:        %{pypi_source}
+Source0:        %{pypi_source pyunicorn}
 Patch0:         0001-Skip-test.patch
 
 BuildRequires:  python3-devel
