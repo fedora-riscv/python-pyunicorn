@@ -14,7 +14,7 @@ designed for analyzing networks of interacting/interdependent networks.}
 
 Name:           python-%{pypi_name}
 Version:        0.6.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Unified complex network and recurrence analysis toolbox
 
 # The entire source code is BSD except the following files:
@@ -87,12 +87,15 @@ tox -e units
 %endif
 
 %files -n python3-%{pypi_name}
-%doc README.rst
+%doc README.rst examples/
 %license LICENSE.txt
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Thu Feb 17 2022 Iztok Fister Jr. <iztokf AT fedoraproject DOT org> - 0.6.1-8
+- Install examples/ in docs
+
 * Thu Feb 17 2022 Iztok Fister Jr. <iztokf AT fedoraproject DOT org> - 0.6.1-7
 - Improve description; define acronym
 
