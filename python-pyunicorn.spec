@@ -70,7 +70,7 @@ for lib in $(find . -name "*.py"); do
  mv $lib.new $lib
 done
 # Fix igraph dependency
-%if 0%{?fedora} >= 36
+%if 0%{?fedora} >= 35
 sed -i -e 's/python-igraph/igraph/' requirements.txt tox.ini
 %endif
 
