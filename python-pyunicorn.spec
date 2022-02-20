@@ -6,7 +6,6 @@
 # We can generate PDF documentation as a substitute.
 
 # We do not generate docs, due to the missing dependencies
-# sphinx-automodapi is missing
 %bcond_without doc_pdf
 
 %global pypi_name pyunicorn
@@ -35,6 +34,7 @@ License:        BSD and LGPLv2+
 URL:            http://www.pik-potsdam.de/~donges/pyunicorn/
 Source0:        %{pypi_source pyunicorn}
 Patch0:         0001-Skip-test.patch
+Patch1:         0002-Remove-badges-in-README.patch
 
 BuildRequires:  python3-devel
 BuildRequires:  python3dist(setuptools)
@@ -100,7 +100,7 @@ sed -i -e 's/python-igraph/igraph/' requirements.txt tox.ini
 
 %if %{with doc_pdf}
 %make_build -C docs latex SPHINXOPTS='%{?_smp_mflags}'
-%make_build -C docs/_build/latex LATEXMKOPTS='-quiet'
+%make_build -C docs/build/latex LATEXMKOPTS='-quiet'
 %endif
 
 %install
@@ -122,7 +122,7 @@ tox -e units
 %doc README.rst
 %license LICENSE.txt
 %if %{with doc_pdf}
-%doc docs/_build/latex/%{pypi_name}.pdf
+%doc docs/build/latex/%{pypi_name}.pdf
 %endif
 
 %changelog
