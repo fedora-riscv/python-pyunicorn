@@ -1,0 +1,16 @@
+diff -urN a/README.rst b/README.rst
+--- a/README.rst	2019-06-21 10:12:36.000000000 +0200
++++ b/README.rst	2022-02-19 23:32:41.043399532 +0100
+@@ -2,12 +2,6 @@
+ pyunicorn
+ =========
+ 
+-.. image:: https://travis-ci.org/pik-copan/pyunicorn.svg?branch=master
+-    :target: https://travis-ci.org/pik-copan/pyunicorn
+-.. image:: https://codecov.io/gh/pik-copan/pyunicorn/branch/master/graph/badge.svg
+-  :target: https://codecov.io/gh/pik-copan/pyunicorn
+-
+-
+ ``pyunicorn`` (**Uni**\ fied **Co**\ mplex Network and **R**\ ecurre\ **N**\ ce
+ analysis toolbox) is a fully object-oriented Python package for the advanced
+ analysis and modeling of complex networks. Above the standard measures of
