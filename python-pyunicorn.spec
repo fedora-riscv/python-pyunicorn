@@ -1,5 +1,14 @@
 %bcond_without tests
 
+# Sphinx-generated HTML documentation is not suitable for packaging; see
+# https://bugzilla.redhat.com/show_bug.cgi?id=2006555 for discussion.
+#
+# We can generate PDF documentation as a substitute.
+
+# We do not generate docs, due to the missing dependencies
+# sphinx-automodapi is missing
+%bcond_without doc_pdf
+
 %global pypi_name pyunicorn
 
 %global _description %{expand:
@@ -14,7 +23,7 @@ designed for analyzing networks of interacting/interdependent networks.}
 
 Name:           python-%{pypi_name}
 Version:        0.6.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Unified complex network and recurrence analysis toolbox
 
 # The entire source code is BSD except the following files:
@@ -29,6 +38,12 @@ Patch0:         0001-Skip-test.patch
 
 BuildRequires:  python3-devel
 BuildRequires:  python3dist(setuptools)
+
+%if %{with doc_pdf}
+BuildRequires:  make
+BuildRequires:  python3-sphinx-latex
+BuildRequires:  latexmk
+%endif
 
 BuildRequires:  make
 BuildRequires:  gcc-c++
@@ -62,6 +77,12 @@ Summary:        %{summary}
 
 %description -n python3-%{pypi_name} %_description
 
+%package doc
+Summary:        Documentation and examples for %{name}
+
+%description doc
+%{summary}.
+
 %prep
 %autosetup -n %{pypi_name}-%{version}
 for lib in $(find . -name "*.py"); do
@@ -76,6 +97,11 @@ sed -i -e 's/python-igraph/igraph/' requirements.txt tox.ini
 
 %build
 %py3_build
+
+%if %{with doc_pdf}
+%make_build -C docs latex SPHINXOPTS='%{?_smp_mflags}'
+%make_build -C docs/_build/latex LATEXMKOPTS='-quiet'
+%endif
 
 %install
 %py3_install
@@ -92,7 +118,17 @@ tox -e units
 %{python3_sitearch}/%{pypi_name}
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
+%files doc
+%doc README.rst
+%license LICENSE.txt
+%if %{with doc_pdf}
+%doc docs/_build/latex/%{pypi_name}.pdf
+%endif
+
 %changelog
+* Sat Feb 19 2022 Iztok Fister Jr. <iztokf AT fedoraproject DOT org> - 0.6.1-9
+- Add subpackage for docs
+
 * Thu Feb 17 2022 Iztok Fister Jr. <iztokf AT fedoraproject DOT org> - 0.6.1-8
 - Install examples/ in docs
 
