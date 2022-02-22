@@ -33,7 +33,12 @@ Summary:        Unified complex network and recurrence analysis toolbox
 License:        BSD and LGPLv2+
 URL:            http://www.pik-potsdam.de/~donges/pyunicorn/
 Source0:        %{pypi_source pyunicorn}
+
+# patch intended for skipping two tests due to the failed attempts on i686
 Patch0:         0001-Skip-test.patch
+
+# patch removes two badges that are in svg format
+# it resolves problems with building docs
 Patch1:         0002-Remove-badges-in-README.patch
 
 BuildRequires:  python3-devel
@@ -106,7 +111,6 @@ sed -i -e 's/python-igraph/igraph/' requirements.txt tox.ini
 %install
 %py3_install
 
-# patch intended for skipping two tests due to the failed attempts on i686
 %check
 %if %{with tests}
 tox -e units
