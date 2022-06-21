@@ -22,7 +22,7 @@ designed for analyzing networks of interacting/interdependent networks.}
 
 Name:           python-%{pypi_name}
 Version:        0.6.1
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Unified complex network and recurrence analysis toolbox
 
 # The entire source code is BSD except the following files:
@@ -130,6 +130,9 @@ tox -e units
 %endif
 
 %changelog
+* Tue Jun 21 2022 Python Maint <python-maint@redhat.com> - 0.6.1-10
+- Rebuilt for Python 3.11
+
 * Sat Feb 19 2022 Iztok Fister Jr. <iztokf AT fedoraproject DOT org> - 0.6.1-9
 - Add subpackage for docs
 
